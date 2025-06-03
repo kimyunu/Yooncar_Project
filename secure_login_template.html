@@ -1,0 +1,30 @@
+<!-- templates/secure_login_template.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+  <h1>YoonCar Security Simulator - 로그인</h1>
+
+  <!-- 플래시 메시지 출력 -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flash-messages">
+        {% for msg in messages %}
+          <li style="color: red;">{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST">
+    {{ csrf_token() }}
+    <label>아이디: <input type="text" name="username" required></label><br>
+    <label>비밀번호: <input type="password" name="password" required></label><br>
+    <button type="submit">로그인</button>
+  </form>
+</body>
+</html>

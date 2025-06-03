@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Error {{ error_code }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    <div class="error-container">
+        <h1>⚠ Error {{ error_code }} ⚠</h1>
+        <p>{{ error_message }}</p>
+        <button class="btn" onclick="location.href='/'">홈으로 돌아가기</button>
+    </div>
+</body>
+</html>

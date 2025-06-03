@@ -1,0 +1,17 @@
+<!-- templates/accident.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사고 발생</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}">
+</head>
+<body>
+  <h1>!! 사고 발생 !!</h1>
+  <p>시간: {{ time }}</p>
+  <pre id="accidentLog">
+    <!-- 원본에 있던 사고 로그/터미널 스타일 그대로 유지 -->
+    차량이 제어를 잃고 전복되었습니다.
+  </pre>
+</body>
+</html>

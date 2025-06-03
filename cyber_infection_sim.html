@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>⚠ SYSTEM BREACH DETECTED ⚠</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/simulation.css') }}" />
+  <script src="{{ url_for('static', filename='js/virus_logs.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/traffic_sim.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/simulation_overlay.js') }}"></script>
+</head>
+<body onload="initInfectionSummary()">
+  <!-- 상단 Plain-Language 설명 패널 -->
+  <div class="alert-panel">
+    <p>🔴[긴급 알림] 차량 해킹이 감지되었습니다! 즉시 복구 코드 필요.</p>
+  </div>
+
+  <!-- 오른쪽 하단 Summary 요약 패널 -->
+  <div id="summary-panel" class="summary-panel"></div>
+
+  <!-- 터미널처럼 타이핑되는 해킹 로그 -->
+  <pre id="log-output"></pre>
+
+  <script>
+    // 초기 해킹 로그 출력 완료 후 10초 뒤 감염 심화 페이지로 자동 이동
+    startLogSequence(() => {
+      setTimeout(() => {
+        window.location.href = "/infection_enhanced";
+      }, 10000);
+    });
+  </script>
+</body>
+</html>

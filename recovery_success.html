@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>복구 완료</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+  <div class="recovery-success-container">
+    <h1>✅ 시스템 복구 성공 ✅</h1>
+    <p>모든 악성 프로세스가 제거되었으며, 배터리 BMS가 정상화되었습니다.<br>
+    차량은 현재 안전 모드로 전환되어 정차 상태입니다.</p>
+    <ul>
+      <li>복구된 셀 개수: 12개</li>
+      <li>열폭주 억제: 완료</li>
+      <li>LiDAR/레이더 센서 재초기화: 완료</li>
+    </ul>
+    <button class="btn" onclick="location.href='{{ url_for('dashboard') }}'">대시보드로 돌아가기</button>
+  </div>
+</body>
+</html>

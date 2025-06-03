@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>⚠ EXTREME SYSTEM COMPROMISE ⚠</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/flicker.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/simulation.css') }}" />
+  <script src="{{ url_for('static', filename='js/enhanced_logs.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/simulation_overlay.js') }}"></script>
+</head>
+<body onload="initEnhancedSummary()">
+  <!-- 상단 Plain-Language 설명 패널 -->
+  <div class="alert-panel">
+    <p>🛑[위험 단계 최고] 배터리 열폭주 직전! 곧 폭발 예상.</p>
+  </div>
+
+  <!-- 오른쪽 하단 Summary 요약 패널 -->
+  <div id="summary-panel" class="summary-panel"></div>
+
+  <!-- 터미널처럼 타이핑되는 심화 해킹 로그 -->
+  <pre id="enhanced-log-output"></pre>
+
+  <!-- Tech-Log와 함께 실시간 CPU/Battery Temp 그래프 영역 -->
+  <div class="stats-container">
+    <div class="stat-box">
+      <h3>CPU LOAD</h3>
+      <div class="bar-graph">
+        <div class="bar-fill" id="cpu-bar"></div>
+      </div>
+      <p id="cpu-percent" style="color: #FF0000; font-weight: bold;">--%</p>
+    </div>
+    <div class="stat-box">
+      <h3>BATTERY TEMP</h3>
+      <div class="bar-graph">
+        <div class="bar-fill" id="bat-bar"></div>
+      </div>
+      <p id="bat-temp" style="color: #FF0000; font-weight: bold;">--°C</p>
+    </div>
+    <div class="stat-box">
+      <h3>CAMERA FEED</h3>
+      <p style="color: #888;">Feed Lost</p>
+    </div>
+  </div>
+
+  <script>
+    // 로그 출력 완료 후 15초 뒤 폭발음 재생 → 사고 화면으로 이동
+    startEnhancedLog(() => {
+      setTimeout(() => {
+        const explosion = new Audio("{{ url_for('static', filename='assets/explosion_sound.mp3') }}");
+        explosion.play();
+        setTimeout(() => {
+          window.location.href = "/accident";
+        }, 3000);
+      }, 15000);
+    });
+
+    // CPU, BATTERY TEMP 그래프 애니메이션 + 숫자 표시
+    function animateStats() {
+      const cpuBar = document.getElementById('cpu-bar');
+      const batBar = document.getElementById('bat-bar');
+      const cpuPercent = document.getElementById('cpu-percent');
+      const batTemp = document.getElementById('bat-temp');
+
+      // 2050년형 고성능 CPU 로드: 90~100%
+      const cpuVal = Math.floor(Math.random() * 10 + 90);
+      // 배터리 온도: 120~150°C 극한 상태
+      const batVal = Math.floor(Math.random() * 30 + 120);
+
+      cpuBar.style.height = cpuVal + '%';
+      cpuPercent.textContent = cpuVal + '%';
+
+      // 배터리 Temp 그래프: 200px 기준으로 0~200°C 매핑
+      const mappedHeight = Math.min((batVal / 200) * 100, 100);
+      batBar.style.height = mappedHeight + '%';
+      batTemp.textContent = batVal + '°C';
+
+      setTimeout(animateStats, 1000);
+    }
+    animateStats();
+  </script>
+</body>
+</html>

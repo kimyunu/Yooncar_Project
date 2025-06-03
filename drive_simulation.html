@@ -1,0 +1,17 @@
+<!-- templates/drive_simulation.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자율주행 시뮬레이션</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simulation.css') }}">
+</head>
+<body>
+  <h1>자율주행 시뮬레이션</h1>
+  <p>시뮬레이션이 정상적으로 실행 중입니다...</p>
+
+  <!-- 원본 코드에 있던 운전 시뮬레이션 canvas / 이벤트 바인딩 등은 그대로 유지 -->
+  <canvas id="driveCanvas" width="800" height="400"></canvas>
+  <script src="{{ url_for('static', filename='js/drive_sim.js') }}"></script>
+</body>
+</html>

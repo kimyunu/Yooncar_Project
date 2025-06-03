@@ -1,0 +1,57 @@
+<!--
+  tesla_easteregg_v1_5.html
+  “해킹 주체가 Tesla인 것처럼” 살짝 암시해 주는 용도의 독립형 이스터에그
+  - 기존 템플릿 어디에든 <body> 내부 맨 맨 아래에 붙여넣기만 하세요.
+  - 특별한 CSS/JS를 별도 로드할 필요 없이, 이 HTML 파일 하나로 동작합니다.
+-->
+
+<!-- ☆☆☆ Tesla Hack Easter Egg v1.5 ☆☆☆ -->
+<style>
+  /* 이스터에그 전용 최소 스타일 */
+  #tesla-easteregg {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg') no-repeat center/contain;
+    opacity: 0; /* 평상시엔 보이지 않음 */
+    pointer-events: none;
+    z-index: 9999;
+    animation: teslaPulse 4s infinite;
+  }
+
+  /* 가끔씩 아주 잠깐 흐리게 등장하도록 애니메이션 */
+  @keyframes teslaPulse {
+    0%   { opacity: 0; transform: scale(1); }
+    45%  { opacity: 0; transform: scale(1); }
+    50%  { opacity: 0.3; transform: scale(1.2); }
+    55%  { opacity: 0; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1); }
+  }
+
+  /* 콘솔 로그 전용 스타일 (약간의 컬러 포맷팅) */
+  .tesla-console-header {
+    color: #e82127; /* Tesla 레드 */
+    font-weight: bold;
+  }
+</style>
+
+<div id="tesla-easteregg" title="Tesla Hack Detected"></div>
+
+<script>
+  (function(){
+    // 1) 콘솔에 Tesla 관련 “단서”를 한 줄 출력
+    console.log("%c🚀 Tesla Autopilot Override Engaged 🚀", "color: #e82127; font-size: 14px; font-weight: bold;");
+    console.log("%c-> Source: Tesla Infosec Division (Internal Testing Mode)", "color: #AAA; font-size: 12px;");
+
+    // 2) 화면 우측 하단에 Tesla 로고가 간헐적으로 아주 잠깐만 나타났다 사라지도록 설정
+    //    애니메이션은 @keyframes teslaPulse 에서 정의되어 있으며, 4초 주기로 50% 시점에 짧게 깜빡입니다.
+
+    // (이미 HTML 내에 #tesla-easteregg 요소가 있고 CSS에 애니메이션이 정의되어 있습니다.
+    //  JS에서는 별도 제어 없이 그냥 그대로 두면 자동으로 애니메이션이 작동합니다.)
+
+    // 끝. 더 이상 특별한 로직은 없습니다.
+  })();
+</script>
+<!-- ☆☆☆ End of Tesla Hack Easter Egg v1.5 ☆☆☆ -->
