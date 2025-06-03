@@ -1,0 +1,131 @@
+/* simulation.css
+   시뮬레이션 단계 전용 CSS 파일
+   - 상단 Plain-Language 설명 패널 스타일
+   - Tech-Log 영역 스타일 보강
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #FFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ───────────────────────────────────────────────────── */
+/* ★ Plain-Language 설명 패널 (상단 붉은 경고창) */
+.alert-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #b50000;
+    color: #FFF;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0.95;
+}
+.alert-panel p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ───────────────────────────────────────────────────── */
+/* Tech-Log (터미널) 기본 스타일 */
+#log-output,
+#enhanced-log-output {
+    margin-top: 60px; /* 상단 설명 패널 공간 확보 */
+    padding: 10px;
+    background: #000;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+/* Hover-over 툴팁 스타일 (기술 용어 설명) */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #00FF00;
+    cursor: help;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #222;
+    color: #FFF;
+    text-align: left;
+    padding: 8px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%; /* 툴팁 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ───────────────────────────────────────────────────── */
+/* 사이드바 형식의 Plain-Language 요약 (화면 오른쪽 하단 표시) */
+.summary-panel {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #FFF;
+    border: 1px solid #FF4500;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    z-index: 1000;
+}
+.summary-panel h3 {
+    margin-top: 0;
+    color: #FF4500;
+    font-size: 16px;
+}
+.summary-panel p {
+    margin: 8px 0;
+}
+
+/* ───────────────────────────────────────────────────── */
+/* Accident 화면 전용 스타일 (깜박이는 경고 문구 등) */
+.crash-container {
+    text-align: center;
+    padding-top: 80px; /* 상단 설명 패널 공간 확보 */
+    background: #000;
+    color: #FF0000;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.crash-container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.crash-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.crash-container .flame {
+    font-size: 48px;
+    animation: flicker 0.1s infinite;
+}
+@keyframes flicker {
+    0%   { opacity: 1; transform: scale(1); }
+    25%  { opacity: 0.6; transform: scale(1.05); }
+    50%  { opacity: 1; transform: scale(1); }
+    75%  { opacity: 0.7; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}

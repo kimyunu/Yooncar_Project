@@ -1,0 +1,234 @@
+/* precision.css */
+/* 1) HUD용 배터리 SOC/온도 게이지, CPU/메모리 차트, LiDAR/CAM 오버레이, 카메라 글리치, 네트워크 트래픽 그래프 등 */
+
+/* -----------------------------------------
+   1.1 배터리 SOC 및 온도 게이지
+----------------------------------------- */
+.battery-panel, .temp-panel {
+  width: 220px;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00FF00;
+  border-radius: 8px;
+  position: relative;
+  color: #00FF00;
+  font-family: 'Courier New', monospace;
+  margin: 5px;
+  padding: 10px;
+}
+
+.battery-panel h3, .temp-panel h3 {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.battery-gauge, .temp-gauge {
+  width: 100%;
+  height: 15px;
+  background: #002200;
+  border: 1px solid #00FF00;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 8px;
+}
+.battery-fill, .temp-fill {
+  height: 100%;
+  background: #FF0000;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* 배터리 퍼센트 텍스트 */
+.battery-text, .temp-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 40px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* -----------------------------------------
+   1.2 LiDAR 포인트 클라우드(정적 이미지)
+----------------------------------------- */
+.lidar-panel {
+  width: 300px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00FF00;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+}
+.lidar-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+.lidar-caption {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: #00FF00;
+}
+
+/* -----------------------------------------
+   1.3 카메라 피드 + 글리치 효과
+----------------------------------------- */
+.camera-panel {
+  width: 300px;
+  height: 180px;
+  background: #000;
+  border: 1px solid #00FF00;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+}
+.camera-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+.camera-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  background: url('../assets/cam_glitch_sprite.png') no-repeat;
+  background-size: cover;
+  animation: glitchAnim 3s infinite;
+}
+@keyframes glitchAnim {
+  0%   { opacity: 0; transform: translate(0, 0) skew(0deg); }
+  10%  { opacity: 0.3; transform: translate(-3px, 2px) skew(2deg); }
+  20%  { opacity: 0; }
+  30%  { opacity: 0.2; transform: translate(2px, -2px) skew(-2deg); }
+  40%  { opacity: 0; }
+  50%  { opacity: 0.25; transform: translate(-2px, 1px) skew(1deg); }
+  60%  { opacity: 0; }
+  70%  { opacity: 0.3; transform: translate(1px, -3px) skew(-1deg); }
+  80%  { opacity: 0; }
+  90%  { opacity: 0.2; transform: translate(3px, 0) skew(0deg); }
+  100% { opacity: 0; }
+}
+
+/* -----------------------------------------
+   1.4 네트워크 트래픽 실시간 그래프(캔버스)
+----------------------------------------- */
+.traffic-panel {
+  width: 300px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00FF00;
+  border-radius: 8px;
+  position: relative;
+  margin: 5px;
+}
+#traffic-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* -----------------------------------------
+   1.5 CPU / 메모리 차트 (정적 바 차트 + 애니메이션)
+----------------------------------------- */
+.cpu-mem-panel {
+  width: 300px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00FF00;
+  border-radius: 8px;
+  position: relative;
+  margin: 5px;
+  padding: 10px;
+  color: #00FF00;
+  font-family: 'Courier New', monospace;
+}
+.cpu-mem-panel h3 {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}
+.bar-graph {
+  width: 100%;
+  height: 12px;
+  background: #002200;
+  border: 1px solid #00FF00;
+  border-radius: 3px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #FF0000;
+  transition: width 0.5s;
+}
+
+/* -----------------------------------------
+   1.6 사고 화면 진동, 파편 애니메이션
+----------------------------------------- */
+@keyframes screenShake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  10%  { transform: translate(-3px, 2px) rotate(-1deg); }
+  20%  { transform: translate(2px, -2px) rotate(1deg); }
+  30%  { transform: translate(-1px, 1px) rotate(-1deg); }
+  40%  { transform: translate(1px, -1px) rotate(1deg); }
+  50%  { transform: translate(-2px, 2px) rotate(0deg); }
+  60%  { transform: translate(2px, -2px) rotate(-1deg); }
+  70%  { transform: translate(-3px, 1px) rotate(1deg); }
+  80%  { transform: translate(2px, 0px) rotate(0deg); }
+  90%  { transform: translate(-1px, 2px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.crash-shake {
+  animation: screenShake 0.15s infinite;
+}
+.fragment {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #FF4500;
+  opacity: 0.8;
+  border-radius: 2px;
+  animation: fragmentFall 1.5s ease-in-out forwards;
+}
+@keyframes fragmentFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+}
+
+/* -----------------------------------------
+   1.7 뉴스 헤드라인 / 트위터 피드 바텀 틱커
+----------------------------------------- */
+.news-ticker {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.9);
+  color: #FF0000;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  padding: 5px 0;
+  overflow: hidden;
+}
+.news-ticker .ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 20s linear infinite;
+}
+@keyframes ticker {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}

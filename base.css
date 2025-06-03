@@ -1,0 +1,117 @@
+/* base.css */
+/* 공통 기본 스타일 */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #111;
+    color: #EEE;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00A2FF;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background-color: #0088CC;
+}
+
+.login-container {
+    width: 350px;
+    margin: 100px auto;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.login-container h1.logo {
+    font-size: 2rem;
+    color: #00FF00;
+    margin-bottom: 10px;
+}
+.login-container .subtitle {
+    margin-bottom: 20px;
+    color: #AAA;
+}
+.login-form .form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00FF00;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    background: #222;
+    border: 1px solid #00FF00;
+    border-radius: 4px;
+    color: #FFF;
+}
+.alerts {
+    margin-top: 10px;
+}
+.alert {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.alert-error {
+    background: rgba(255,0,0,0.2);
+    color: #FF6666;
+}
+.alert-warning {
+    background: rgba(255,193,7,0.2);
+    color: #FFC107;
+}
+.alert-success {
+    background: rgba(0,255,65,0.2);
+    color: #00FF41;
+}
+.alert-info {
+    background: rgba(0,123,255,0.2);
+    color: #007BFF;
+}
+
+/* 에러 화면, 복구 성공 화면, 완전 파괴 화면 등 공통 */
+.error-container,
+.recovery-success-container,
+.complete-container {
+    width: 500px;
+    margin: 100px auto;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #FF0000;
+}
+.error-container h1,
+.recovery-success-container h1,
+.complete-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 복구 성공 화면 */
+.recovery-success-container {
+    color: #00FF00;
+}
+.recovery-success-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+    color: #FFF;
+}
+.recovery-success-container ul li {
+    margin-bottom: 8px;
+}

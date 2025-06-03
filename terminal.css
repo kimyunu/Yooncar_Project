@@ -1,0 +1,32 @@
+/* terminal.css */
+/* 터미널 스타일 (로그 출력용) */
+
+body {
+    margin: 0;
+    background: #000;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+/* 상단 경고 배너 (공통) */
+#alert-banner,
+#alert-banner-enhanced {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+}
+
+/* 로그인 및 복구 화면 터미널 공통 */
+.recovery-container,
+.error-container {
+    background: rgba(0,0,0,0.95);
+}
+
+/* 로그 프리 영역 */
+#log-output,
+#enhanced-log-output {
+    white-space: pre-wrap;
+    padding: 10px;
+    height: 100vh;
+    overflow-y: auto;
+}
